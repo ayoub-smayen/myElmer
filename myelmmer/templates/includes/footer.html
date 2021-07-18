@@ -1,0 +1,34 @@
+{% load flatpages %}
+{% get_flatpages as flatpages %}
+{% load static %}
+<div class="text-muted" style="font-size:12px; margin-top:20px; padding:5px;">
+
+  {% for page in flatpages %}
+    <a href="{{ page.url }}">{{ page.title }}</a><span> &middot; </span>
+  {% endfor %}
+
+  <a href="{% url 'django.contrib.sitemaps.views.sitemap' %}" target="_blank">Sitemap</a><span> &middot; </span>
+  <a href="#">Send Feedback</a><br>
+  <span>
+      <img src="{% static 'img/tn-logomeryoul.PNG'%}" height="450px" width="350px"  />
+  </span>
+
+  <a href="http://azeryrecipes.pythonanywhere.com/" target="_blank">
+      try it
+  </a>
+
+  <a href="https://app.cosmicjs.com/add-bucket?show_tour=true&signup=google" target="_blank">
+      create your app here
+  </a>
+  <a href="http://videotube1.pythonanywhere.com/" target="_blank">
+      videoTub-Tn
+  </a>
+
+  <a  href="https://appchat258.pythonanywhere.com/" target="_blank">
+      my-musicTn
+  </a>
+
+  <a href="https://15b45be0-f24b-11e7-8739-bd1a2fa1284e.cosmicapp.co/"target="_blank">
+      blog
+  </a>
+</div>
