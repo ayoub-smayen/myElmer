@@ -116,121 +116,179 @@ label:active:after {
   width: 45px;
 }
 */
+ .round { border-radius: 50%; }
 </style>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.rawgit.com/edzapratama/cobaan/2e8ed5f4/inisial.js"></script>
+<script>
+// Toggle grid padding
+function myFunction() {
+  var x = document.getElementById("myGrid");
+  if (x.className === "w3-row") {
+    x.className = "w3-row-padding";
+  } else {
+    x.className = x.className.replace("w3-row-padding", "w3-row");
+  }
+}
 
+// Open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.width = "350px";
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+
+
+<!-- !PAGE CONTENT! -->
 
 
 
 
 
 <nav class="navbar sticky-top navbar-expand-lg navbar-expand-md navbar-light extra_navbar_styling">
+    {% if request.user.is_authenticated %}
+           <img class="round" width="120" height="120" avatar="{{request.user.username}}"  style="background:orange"/>
+
+      {%else%}
+<img class="round" width="120" height="120" avatar="Guest"  style="background:orange"/>
+      {%endif%}
   <div class="container">
+
+
+
     <a class="navbar-brand mb-1" href="{% url 'home' %}">
-      <img src="{% static 'img/tn-logo.PNG' %}?lastmod=1" alt="Tn-lmer" height="75px"width="75px">
+      <img src="{% static 'img/tn-logo.PNG' %}?lastmod=1" alt="Tn-lmer" height="120px"width="175px">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavbar" aria-controls="topNavbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="topNavbar">
         <!----->
-    <div class="toggle">
-        <input id="switch" type="checkbox" name="theme" />
-        <label for="switch">
-            <i class="fa fa-toggle-on">
 
-            </i>
-        </label>
-      </div>
-<p hidden> here </p>
+
+<div class="w3-opacity"  style="float:left;">
+<span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+<div class="w3-clear"></div>
+</div>
+
+
+
+
       <ul class="navbar-nav mr-auto">
         <form class="form-inline"
               action="{% if not bv %}{% url 'search' %}{% else %}{% url 'board_search' board.slug %}{% endif %}"
               method="get"
               autocomplete="off">
           <div class="form-group">
-            <label for="search" class="sr-only">Search</label>
+            <label for="search" class="sr-only">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </label>
+             <i class="fa fa-search" aria-hidden="true"></i>
             <input type="text"
                    class="form-control form-control-md"
                    id="search"
                    name="query"
                    placeholder="{% if not bv %}Search here {% else %}Search b/{{board.slug}}{% endif %}">
+
           </div>
+
         </form>
+
+
+
         <li class="nav-item">
           <a class="nav-link" href="{% url 'home' %}">
-          <i class="fa fa-home">
+          <i class="fa fa-home fa-2x" style="font-size:30px;color:purple;">
 
           </i>
           </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'trending' %}">Trending</a>
+            <a class="nav-link" href="{% url 'trending' %}">
+                <i class="fa fa-newspaper-o" aria-hidden="true" style="font-size:30px;color:purple;"></i>
+            </a>
         </li>
+
+         <li class="nav-item">
+            <a class="nav-link" href="   https://musicaeverywhere.netlify.app/">
+
+                <i class="fa fa-music" aria-hidden="true" style="font-size:30px;color:purple;"></i>
+            </a>
+        </li>
+
+
 
         <li class="nav-item">
             <a class="nav-link" href="https://fathomless-mountain-89089.herokuapp.com/" target="_blank">
-                <i class="fa fa-send">
+                <i class="fa fa-send " style="font-size:30px;color:purple;">
 
                 </i>
             </a>
         </li>
 
+         <li class="nav-item">
+
+
+                         <a class="nav-link" href="{% url 'tnelmer3' %}" target="_blank">
+               <i class="fa fa-map-marker " aria-hidden="true" style="font-size:30px;color:red;"></i>
+            </a>
+        </li>
+
+
+         <li class="nav-item">
+            <a class="nav-link" href="https://infinite-tundra-48170.herokuapp.com/" target="_blank">
+                <img src="https://png.pngtree.com/png-vector/20190430/ourmid/pngtree-dialog-box-vector-speech-bubbles-message-boxes-collection-for-comments-png-image_1005974.jpg"
+
+                height="30" width="30"
+                >
+
+
+            </a>
+        </li>
+
+
         <li class="nav-item">
-            <a class="nav-link" href="
-https://hero1chat.herokuapp.com/" target="_blank">
-<i class="fa fa-video-camera" aria-hidden="true"></i>
+            <a class="nav-link" href="https://hero1chat.herokuapp.com/" target="_blank">
+<i class="fa fa-video-camera" aria-hidden="true" style="font-size:30px;color:purple;"></i>
 </a>
         </li>
 
-              <li class="nav-item">
-            <a class="nav-link" href="{% url 'tnelmer3' %}" target="_blank">
-               <i class="fa fa-map-marker" aria-hidden="true"></i>
-            </a>
-        </li>
-
-         <li class="nav-item">
-            <a class="nav-link" href="{% url 'tnelmer2' %}" target="_blank">
-                <i class="fa fa-save">
-
-                </i>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'tnelmer5' %}" target="_blank">
-                <i class="fa fa-eye">
-
-                </i>
-
-            </a>
-        </li>
-
-
-         <li class="nav-item">
-            <a class="nav-link" href="{% url 'tnelmer4' %}" target="_blank">
-                <i class="fa fa-gamepad">
-
-                </i>
-            </a>
-        </li>
 
         <li class="nav-item">
           <a class="nav-link"
              href="{% if request.user.is_authenticated %}#{% else %}{% url 'view_all_boards' %}{% endif %}"
-             id="boards_container_trigger">Boards</a>
+             id="boards_container_trigger">
+              <i class="fa fa-clipboard fa-3x" aria-hidden="true" style="font-size:30px;color:purple;"></i>
+          </a>
         </li>
       </ul>
 
       {% if request.user.is_authenticated %}
-        <a href="{% url 'inbox' %}" class="mr-3" id="check_messages"><i class="fa fa-inbox fa-lg" aria-hidden="true"></i><span id="messages_count"></span></a>
-        <a href="{% url 'activities' %}" class="mr-3" id="check_activities"><i class="fa fa-bell-o fa-lg" aria-hidden="true"></i><span id="activities_count"></span></a>
-        <a href="{% url 'new_subject' %}" class="mr-3"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+    <a href="{% url 'inbox' %}" class="mr-3" id="check_messages"><i class="fa fa-inbox fa-lg" aria-hidden="true"></i><span id="messages_count"></span></a>
+
+    <a href="{% url 'activities' %}" class="mr-3" id="check_activities"><i class="fa fa-bell-o fa-lg" aria-hidden="true"></i><span id="activities_count"></span></a>
+    <a href="{% url 'new_subject' %}" class="mr-3"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
 
         <div class="dropdown">
           <a href="#" role="button" id="user_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="{{request.user.profile.get_picture}}" style="width: 36px; height: 36px; border-radius: 50px;">
+            <img src="{{request.user.profile.get_picture}}" style="width: 100px; height: 100px; border-radius: 50px;">
           </a>
           <div class="dropdown-menu" aria-labelledby="user_dropdown" style="right: 0; left: auto;">
+
+
+
+        <a class="dropdown-item" href="{% url 'inbox' %}" class="mr-3" id="check_messages">Inbox<span id="messages_count" style="color:red"></span></a>
+        <a class="dropdown-item" href="{% url 'activities' %}" class="mr-3" id="check_activities">activities<span id="activities_count" style="color:red"></span></a>
+        <a class="dropdown-item" href="{% url 'new_subject' %}" class="mr-3">new subject</a>
+
+
             <a class="dropdown-item" href="{% url 'user_profile' request.user.username %}">Your Profile</a>
             <a class="dropdown-item" href="{% url 'view_following' %}">Following</a>
             <a class="dropdown-item" href="{% url 'tnelmer' %}">private-photo</a>
@@ -240,12 +298,45 @@ https://hero1chat.herokuapp.com/" target="_blank">
             <a class="dropdown-item" href="{% url 'user_created_boards' request.user.username %}">Your Boards</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{% url 'profile_edit' %}">Account Settings</a>
-             <li class="nav-item">
-            <a class="nav-link" href="{% url 'tnelmer5' %}" target="_blank">
+
+    <a class="dropdown-item" href=" https://caleventusr.netlify.app/" target="_blank">
+
+                <i class="fa fa-calendar">
+
+                </i>
+            </a>
+            <a class="dropdown-item" href="{% url 'tnelmer5' %}" target="_blank">
 
                 see mre
             </a>
-        </li>
+
+
+            <a class="dropdown-item" href="http://videotube1.pythonanywhere.com/video/3/1/" target="_blank">
+                <i class="fa fa-plus " style="font-size:30px;color:purple;">
+
+                </i>
+            </a>
+
+            <a class="dropdown-item" href="{% url 'tnelmer2' %}" target="_blank">
+                <i class="fa fa-save" style="font-size:20px;color:purple;">
+
+                </i>
+            </a>
+
+             <a class="dropdown-item" href="{% url 'tnelmer3' %}" target="_blank">
+               <i class="fa fa-map-marker " aria-hidden="true" style="font-size:20px;color:red;"></i>
+            </a>
+
+
+
+
+
+
+
+
+
+
+
             <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
           </div>
         </div>
@@ -256,3 +347,144 @@ https://hero1chat.herokuapp.com/" target="_blank">
     </div>
   </div>
 </nav>
+
+
+
+
+<nav class="w3-sidebar w3-orange w3-animate-top w3-xxlarge" style="display:none;padding-top:150px" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-black w3-xxlarge w3-padding w3-display-topright" style="padding:6px 24px">
+    <i class="fa fa-remove"></i>
+  </a>
+  <div class="w3-bar-block w3-center">
+    <a href="{% url 'home' %}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">
+        home
+    </a>
+
+
+<a href="{% url  'bookevent' %}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">
+       bookevent
+    </a>
+
+
+     <a href=" https://ide.cs50.io" class="w3-bar-item w3-button w3-text-grey w3-hover-black" target="_blank">
+       cs50-editor-code
+    </a>
+
+
+    <a href="https://alpha.sandstorm.io/">
+        room-messagerie
+    </a>
+
+
+    <a href=" https://shopfood1.pythonanywhere.com/" class="w3-bar-item w3-button w3-text-grey w3-hover-black">
+        foodshop
+    </a>
+
+   <a href="https://naughty-nightingale-e33d8b.netlify.app/"   class="w3-bar-item w3-button w3-text-grey w3-hover-black"  target="_blank">
+       weather
+   </a>
+
+
+    <a href="  https://mysocialchaty.netlify.app/"   class="w3-bar-item w3-button w3-text-grey w3-hover-black"  target="_blank">
+       chat video
+   </a>
+
+
+
+  <a href="https://caleventusr.netlify.app/" target="_blank">
+      calendar event
+  </a>
+
+    <a href="http://ayubchatty.pythonanywhere.com/"  class="w3-bar-item w3-button w3-text-grey w3-hover-black" target="_blank">
+        group-chatting
+    </a>
+    <a href="{% url 'trending' %}" class="w3-bar-item w3-button w3-text-grey w3-hover-black">trending</a>
+    <a href="{% url 'tnelmer2' %}" class="w3-bar-item w3-button w3-text-grey w3-hover-black" target="_blank">Notes</a>
+    <a href="https://infinite-tundra-48170.herokuapp.com/" class="w3-bar-item w3-button w3-text-grey w3-hover-black" target="_blank">Chat</a>
+  </div>
+</nav>
+
+
+
+
+<div class="toggle">
+        <input id="switch" type="checkbox" name="theme" />
+
+
+        <label for="switch">
+            <i class="fa fa-toggle-on">
+
+            </i>
+        </label>
+
+         <a href="https://caleventusr.netlify.app/">
+            <i class="fa fa-calendar" style="font-size:30px;">
+
+            </i>
+        </a>
+
+
+         <a href="http://ayubchatty.pythonanywhere.com/">
+        <img src="https://www.vhv.rs/dpng/d/437-4371993_3d-message-icon-png-clipart-png-download-chat.png" height="30" width="30" alt="message-icon"/>
+
+        </a>
+
+
+         <a href="https://chattytn.netlify.app/">
+             <img src="https://img.icons8.com/ios-filled/452/chat-message--v1.png" height="30" width="30" alt="message-icon"/>
+
+        </a>
+
+        <a href="https://naughty-nightingale-e33d8b.netlify.app/">
+            <i class="fa fa-cloud" style="font-size:30px;">
+
+            </i>
+        </a>
+         <a href="https://mysocialchaty.netlify.app/pong.html/">
+            <i class="fa fa-pong">
+
+            </i>
+            <img src="https://thumbs.dreamstime.com/b/tennis-ball-icon-16492142.jpg" height="30" width="30"/>
+        </a>
+
+      </div>
+<p hidden> here </p>
+<!-- Header
+<div class="w3-opacity">
+<span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+<div class="w3-clear"></div>
+<header class="w3-center w3-margin-bottom">
+
+
+
+
+  <p class="w3-padding-16"><button class="w3-button w3-black" onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">
+
+
+      <i class="fa fa-smile">
+
+      </i>
+  </button></p>
+</header>
+</div>
+
+
+
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Some text. Some text. Some text.</p>
+        <p>Some text. Some text. Some text.</p>
+      </div>
+    </div>
+  </div>
+
+-->
+
+
+
+
+
+

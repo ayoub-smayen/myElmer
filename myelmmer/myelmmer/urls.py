@@ -42,7 +42,7 @@ import search.views as search_views
 import subjects.views as subjects_views
 import users.views as users_views
 from subjects.sitemaps import SubjectSitemap
-from .views import tnelmer,tnelmer2,tnelmer3,tnelmer4,tnelmer5
+from .views import tnelmer,tnelmer2,tnelmer3,tnelmer4,tnelmer5,foodhome,bookevent,bookhomepage
 sitemaps = {
     'subjects': SubjectSitemap,
 }
@@ -52,15 +52,18 @@ urlpatterns = [
 
 
 
-
+    re_path(r'^myadmin/', admin.site.urls),
+     path('bookevent/', bookevent, name='bookevent'),
     path('privacy/', tnelmer, name='tnelmer'),
      path('privacy2/', tnelmer2, name='tnelmer2'),
      path('privacy3/', tnelmer3, name='tnelmer3'),
-        path('privacy4/', tnelmer4, name='tnelmer4'),
+    path('privacy4/', tnelmer4, name='tnelmer4'),
+    path("bookevent/index.html/",bookhomepage,name="bookhomepage"),
 
-        path('privacy5/', tnelmer5, name='tnelmer5'),
-
-
+    path('privacy5/', tnelmer5, name='tnelmer5'),
+    path('foody/', foodhome, name='foody'),
+    path('food/',include('main.urls')),
+    path('admin/',admin.site.urls,name="admin" ),
 
 
 
@@ -135,7 +138,7 @@ urlpatterns = [
     re_path(r'^search/$', search_views.search, name='search'),
     re_path(r'^board_search/(?P<board_slug>[-\w]+)/$', search_views.search, name='board_search'),
     re_path(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-    path('admin/', admin.site.urls),
+
 
     # report
     re_path(r'^banned_users/(?P<board>[-\w]+)/$', boards_views.banned_users, name='banned_users'),
