@@ -42,6 +42,20 @@ INSTALLED_APPS = [
     #'django.contrib.staticfiles',
 
 
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.humanize',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
+    'django.contrib.sitemaps',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+      'emoticons',
+
+    'markdownx',
+     'main',
     'boards',
     'subjects',
     'comments',
@@ -55,18 +69,9 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'corsheaders',
     'rest_framework',
-    'emoticons',
-    'main.apps.MainConfig',
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.humanize',
-    'django.contrib.sites',
-    'django.contrib.flatpages',
-    'django.contrib.sitemaps',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+
+
+    #'bootstrap4',
 
 
 ]
@@ -79,7 +84,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+  #  'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
      'corsheaders.middleware.CorsMiddleware',
 ]
 

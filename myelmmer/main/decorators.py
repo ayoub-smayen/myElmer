@@ -10,4 +10,4 @@ def admin_required(view_func):
             return view_func(request, *args, **kwargs)
         else:
             return redirect('/')
-    return wrapper_func 
+    return wrapper_func

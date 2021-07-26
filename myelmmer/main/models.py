@@ -9,7 +9,7 @@ class Item(models.Model):
         ('Best Selling Foods', 'Best Selling Foods'),
         ('New Food', 'New Food'),
         ('Spicy Foods🔥', 'Spicy Foods🔥'),
-    )   
+    )
 
     LABEL_COLOUR = (
         ('danger', 'danger'),
@@ -36,7 +36,7 @@ class Item(models.Model):
         return reverse("main:dishes", kwargs={
             'slug': self.slug
         })
-    
+
     def get_add_to_cart_url(self):
         return reverse("main:add-to-cart", kwargs={
             'slug': self.slug
@@ -85,7 +85,7 @@ class CartItems(models.Model):
 
     def __str__(self):
         return self.item.title
-    
+
     def get_remove_from_cart_url(self):
         return reverse("main:remove-from-cart", kwargs={
             'pk' : self.pk
@@ -95,6 +95,6 @@ class CartItems(models.Model):
         return reverse("main:update_status", kwargs={
             'pk' : self.pk
         })
-    
+
 
 

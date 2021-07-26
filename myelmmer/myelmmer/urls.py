@@ -42,7 +42,7 @@ import search.views as search_views
 import subjects.views as subjects_views
 import users.views as users_views
 from subjects.sitemaps import SubjectSitemap
-from .views import tnelmer,tnelmer2,tnelmer3,tnelmer4,tnelmer5,foodhome,bookevent,bookhomepage
+from .views import tnelmer,tnelmer2,tnelmer3,tnelmer4,tnelmer5,foodhome,bookevent,bookhomepage,cooments,forum1,blogfire
 sitemaps = {
     'subjects': SubjectSitemap,
 }
@@ -50,9 +50,18 @@ sitemaps = {
 urlpatterns = [
 
 
+    path('markdownx/', include('markdownx.urls')),
 
 
-    re_path(r'^myadmin/', admin.site.urls),
+
+    path("blogfire",blogfire,name="blogfire" ),
+
+
+
+     path('forum1/', forum1, name='forum1'),
+    re_path(r'^myadmin/', admin.site.urls,name="admino"),
+    path('cooments/', cooments, name='cooments'),
+
      path('bookevent/', bookevent, name='bookevent'),
     path('privacy/', tnelmer, name='tnelmer'),
      path('privacy2/', tnelmer2, name='tnelmer2'),
@@ -63,7 +72,7 @@ urlpatterns = [
     path('privacy5/', tnelmer5, name='tnelmer5'),
     path('foody/', foodhome, name='foody'),
     path('food/',include('main.urls')),
-    path('admin/',admin.site.urls,name="admin" ),
+    path('adminayoub/',admin.site.urls,name="admin1"),
 
 
 
@@ -138,7 +147,7 @@ urlpatterns = [
     re_path(r'^search/$', search_views.search, name='search'),
     re_path(r'^board_search/(?P<board_slug>[-\w]+)/$', search_views.search, name='board_search'),
     re_path(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
-
+    path('admin/', admin.site.urls,name="adf"),
 
     # report
     re_path(r'^banned_users/(?P<board>[-\w]+)/$', boards_views.banned_users, name='banned_users'),
@@ -168,5 +177,5 @@ if True:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # flatpages urls
-urlpatterns.append(re_path(r'^', include('django.contrib.flatpages.urls')))
+#urlpatterns.append(re_path(r'^', include('django.contrib.flatpages.urls')))
 

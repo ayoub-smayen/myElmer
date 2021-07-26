@@ -1,7 +1,19 @@
 
 from django.shortcuts import render,redirect
 
+from django.urls import reverse
+from django.http import HttpResponseRedirect
+from django.views.generic import TemplateView
 
+def blogfire(req):
+    return render(req,"blogfire.html")
+
+
+
+def forum1(req):
+    return render(req,"forums.html")
+def cooments(req):
+    return render(req , "mycomment.html")
 
 def foodhome(request):
     return render(request, "main/home.html")
