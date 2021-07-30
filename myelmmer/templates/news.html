@@ -3,7 +3,19 @@
         <title>Blogs</title>
         {% load static %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+
+
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Begin emoji-picker Stylesheets -->
+    <link href="//onesignal.github.io/emoji-picker/lib/css/emoji.css" rel="stylesheet">
  <link rel="icon" href="{ % static  ''tn-logo.PNG%}"/>
 
         <!--[if IE]>
@@ -287,13 +299,62 @@ video {
 
 {% include "includes/header.html" %}
 
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myDIV *").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $('.toast').toast('show');
+});
+</script>
 
- <div class="container mt-2">
+<h2>search news </h2>
+
+
+  <div class="toast" data-autohide="false">
+    <div class="toast-header">
+      <strong class="mr-auto text-primary">
+          hello {{request.user.username}}  show us  your  news , what's new
+      </strong>
+      <small class="text-muted"> {{ now }}  </small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+    <div class="toast-body">
+        news  actions
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+   <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">News</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
          <div class="card">
              <div class="card-body">
                  <form id="post-form">
-                     <center><h3>Make A Blog</h3></center>
-                     <textarea id="post" class="form-control" placeholder="What's on your mind..."></textarea>
+                     <center><h3>Make A news </h3></center>
+                     <textarea id="post" class="form-control" placeholder="What's on your mind..." data-emojiable="true" data-emoji-input="unicode"></textarea>
                      <input type="file" class="form-control" id="image" >
                      <div class="text-center">
                          <button type="button" class="btn btn-success" onclick="upload()">Upload</button>
@@ -303,7 +364,26 @@ video {
               </div>
 
          </div>
-         <div class="row mt-4" id="posts">
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+ <div class="container mt-2" id="myDIV">
+         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+         share  what in your mind
+        </button>
+
+        <input id="myInput" type="text" placeholder="Search.."   class="form-control" class="row justify-content-center">
+
+         <div class="row mt-4 container-fluid " id="posts">
 
          </div>
 
@@ -490,14 +570,14 @@ function delete_post(key){
     appId: "1:631788610756:web:b91b11cc776d51b5061591",
     measurementId: "G-6RX71FBKRQ"*/
 
-      apiKey: "AIzaSyDfQal5qQ3zS3DA21oeTrRAonislCWuX68",
-    authDomain: "blogs-233c7.firebaseapp.com",
-    databaseURL: "https://blogs-233c7.firebaseio.com",
-    projectId: "blogs-233c7",
-    storageBucket: "blogs-233c7.appspot.com",
-    messagingSenderId: "960693622725",
-    appId: "1:960693622725:web:325e29579c6c3dc4d91dac",
-    measurementId: "G-3MPBFX087D"
+     apiKey: "AIzaSyBKQqdNlXRtkcy5NtMyNAc3HNZbVUAurjo",
+    authDomain: "bookevent-c85bd.firebaseapp.com",
+    databaseURL: "https://bookevent-c85bd-default-rtdb.firebaseio.com",
+    projectId: "bookevent-c85bd",
+    storageBucket: "bookevent-c85bd.appspot.com",
+    messagingSenderId: "631788610756",
+    appId: "1:631788610756:web:b91b11cc776d51b5061591",
+    measurementId: "G-6RX71FBKRQ"
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
@@ -508,6 +588,32 @@ function delete_post(key){
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
+  <script src="//onesignal.github.io/emoji-picker/lib/js/config.js"></script>
+    <script src="//onesignal.github.io/emoji-picker/lib/js/util.js"></script>
+    <script src="//onesignal.github.io/emoji-picker/lib/js/jquery.emojiarea.js"></script>
+    <script src="//onesignal.github.io/emoji-picker/lib/js/emoji-picker.js"></script>
+    <!-- End emoji-picker JavaScript -->
+
+    <script>
+      $(function() {
+        // Initializes and creates emoji set from sprite sheet
+        window.emojiPicker = new EmojiPicker({
+          emojiable_selector: '[data-emojiable=true]',
+          assetsPath: 'https://github.com/OneSignal/emoji-picker/tree/main/lib/img/',
+          popupButtonClasses: 'fa fa-smile-o'
+          // iconSize: 30
+        });
+        // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+        // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+        // It can be called as many times as necessary; previously converted input fields will not be converted again
+        window.emojiPicker.discover();
+      });
+    </script>
+</body>
+</html>
 
 {% endblock%}

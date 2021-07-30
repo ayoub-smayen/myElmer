@@ -5,10 +5,22 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 
+
+
+
+def error_404(request):
+        data = {}
+        return render(request,'404.html', data)
+
+def error_500(request):
+        data = {}
+        return render(request,'500.html', data)
+
 def blogfire(req):
     return render(req,"blogfire.html")
 
-
+def create_news(req):
+    return render(req,"news.html")
 
 def forum1(req):
     return render(req,"forums.html")

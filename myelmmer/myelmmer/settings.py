@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-^xo8zy=i6q7#p&$8!e=2(bam*s_yc@0wgzifz7!*!0b@^!%qt('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['elmeriyu.pythonanywhere.com']
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
